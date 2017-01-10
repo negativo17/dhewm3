@@ -1,9 +1,10 @@
-%global commit0 89f227b365c2086dbe8818d82324f074a8ab4792
+%global commit0 787405f2537b294c46aa9249f36ab969cad4fbce
+%global date 20161210
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 
 Name:           dhewm3
-Version:        1.4.1rc1
-Release:        1.%{?shortcommit0}%{?dist}
+Version:        1.4.1
+Release:        2%{?shortcommit0:.%{date}git%{shortcommit0}}%{?dist}
 Summary:        Dhewm's Doom 3 engine
 License:        GPLv3+ with exceptions
 URL:            https://github.com/dhewm/%{name}
@@ -75,6 +76,9 @@ fi
 %{_libdir}/%{name}
 
 %changelog
+* Tue Jan 10 2017 Simone Caronni <negativo17@gmail.com> - 1.4.1-2.20161210git787405f
+- Set snapshot release as per packaging guidelines.
+
 * Sat Jan 23 2016 Simone Caronni <negativo17@gmail.com> - 1.4.1rc1-1.89f227b
 - Update to latest 1.4.1rc1.
 - Drop RHEL 6 support, provided libjpeg is too old and would need to have a
