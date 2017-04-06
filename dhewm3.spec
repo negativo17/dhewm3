@@ -3,8 +3,8 @@
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 
 Name:           dhewm3
-Version:        1.4.1
-Release:        3%{?shortcommit0:.%{date}git%{shortcommit0}}%{?dist}
+Version:        1.4.2
+Release:        1%{?shortcommit0:.%{date}git%{shortcommit0}}%{?dist}
 Summary:        Dhewm's Doom 3 engine
 License:        GPLv3+ with exceptions
 URL:            https://github.com/dhewm/%{name}
@@ -16,6 +16,8 @@ Source1:        %{name}-README.txt
 Patch0:         %{name}-no-cdkey.patch
 Patch1:         %{name}-def-fixedtic.patch
 Patch2:         %{name}-carmack.patch
+
+ExcludeArch:    ppc64le
 
 # Generic provider for Doom 3 engine based games
 Provides:       doom3-engine = 1.3.1.1304
@@ -68,7 +70,6 @@ fi
 %make_install
 
 %files
-%{!?_licensedir:%global license %%doc}
 %license COPYING.txt
 %doc README.md README.txt
 %{_bindir}/%{name}
@@ -76,11 +77,15 @@ fi
 %{_libdir}/%{name}
 
 %changelog
-* Thu Apr 06 2017 Simone Caronni <negativo17@gmail.com> - 1.4.1-3.20170402gitd535e54
-- Update to latest snapshot.
-
-* Tue Jan 10 2017 Simone Caronni <negativo17@gmail.com> - 1.4.1-2.20161210git787405f
+* Thu Apr 06 2017 Simone Caronni <negativo17@gmail.com> - 1.4.2-1.20170402gitd535e54
+- Update to latest snapshot (UHD resolution).
 - Set snapshot release as per packaging guidelines.
+
+* Sat Mar 25 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.4.1rc1-3.89f227b
+- Add ExcludeArch for ppc64le due to missing ppc_intrinsics.h
+
+* Sun Mar 19 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 1.4.1rc1-2.89f227b
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
 
 * Sat Jan 23 2016 Simone Caronni <negativo17@gmail.com> - 1.4.1rc1-1.89f227b
 - Update to latest 1.4.1rc1.
