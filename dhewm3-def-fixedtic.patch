@@ -1,6 +1,7 @@
---- dhewm3/neo/framework/Session.cpp	2013-01-03 11:33:59.589307803 +0100
-+++ dhewm3.dg/neo/framework/Session.cpp	2013-01-04 01:05:22.303604034 +0100
-@@ -40,7 +40,7 @@
+diff -Naur dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/Session.cpp dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e/neo/framework/Session.cpp
+--- dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/Session.cpp	2017-05-04 20:46:43.546327066 +0200
++++ dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e/neo/framework/Session.cpp	2017-05-04 20:46:51.500464009 +0200
+@@ -48,7 +48,7 @@
  idCVar	idSessionLocal::com_showAngles( "com_showAngles", "0", CVAR_SYSTEM | CVAR_BOOL, "" );
  idCVar	idSessionLocal::com_minTics( "com_minTics", "1", CVAR_SYSTEM, "" );
  idCVar	idSessionLocal::com_showTics( "com_showTics", "0", CVAR_SYSTEM | CVAR_BOOL, "" );
