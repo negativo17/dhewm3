@@ -1,10 +1,10 @@
-%global commit0 d535e54c90d6d3f22aa2faa4f9a07e04f3e04dc5
-%global date 20170402
+%global commit0 cd8c3662e2f010398097ee654e739ec29550a30e
+%global date 20170422
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 
 Name:           dhewm3
 Version:        1.4.2
-Release:        1%{?shortcommit0:.%{date}git%{shortcommit0}}%{?dist}
+Release:        2%{?shortcommit0:.%{date}git%{shortcommit0}}%{?dist}
 Summary:        Dhewm's Doom 3 engine
 License:        GPLv3+ with exceptions
 URL:            https://github.com/dhewm/%{name}
@@ -77,6 +77,9 @@ fi
 %{_libdir}/%{name}
 
 %changelog
+* Thu May 04 2017 Simone Caronni <negativo17@gmail.com> - 1.4.2-2.20170422gitcd8c366
+- Update to latest snapshot.
+
 * Thu Apr 06 2017 Simone Caronni <negativo17@gmail.com> - 1.4.2-1.20170402gitd535e54
 - Update to latest snapshot (UHD resolution).
 - Set snapshot release as per packaging guidelines.
