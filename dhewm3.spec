@@ -3,7 +3,7 @@ Version:        1.5.0
 Release:        1%{?dist}
 Summary:        Dhewm's Doom 3 engine
 License:        GPLv3+ with exceptions
-URL:            https://github.com/dhewm/%{name}
+URL:            https://dhewm3.org/
 
 Source0:        https://github.com/dhewm/%{name}/releases/download/%{version}/%{name}-%{version}-src.tar.xz
 Source1:        %{name}-README.txt
