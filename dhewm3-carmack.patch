@@ -1,7 +1,7 @@
-diff -Naur dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/CMakeLists.txt dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e/neo/CMakeLists.txt
---- dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/CMakeLists.txt	2017-05-04 20:41:37.409055816 +0200
-+++ dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e/neo/CMakeLists.txt	2017-05-04 20:47:44.461375810 +0200
-@@ -41,6 +41,7 @@
+diff -Naur dhewm3-1.5.0.old/neo/CMakeLists.txt dhewm3-1.5.0/neo/CMakeLists.txt
+--- dhewm3-1.5.0.old/neo/CMakeLists.txt	2019-01-06 16:58:20.269094586 +0100
++++ dhewm3-1.5.0/neo/CMakeLists.txt	2019-01-06 17:02:03.725252014 +0100
+@@ -52,6 +52,7 @@
  option(DEDICATED	"Build the dedicated server" OFF)
  option(ONATIVE		"Optimize for the host CPU" OFF)
  option(SDL2			"Use SDL2 instead of SDL1.2" ON)
@@ -9,7 +9,7 @@ diff -Naur dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/CMakeLists.tx
  
  if(NOT CMAKE_SYSTEM_PROCESSOR)
  	message(FATAL_ERROR "No target CPU architecture set")
-@@ -753,6 +754,9 @@
+@@ -766,6 +767,9 @@
  		sys/win32/win_syscon.cpp
  		sys/win32/SDL_win32_main.c
  	)
@@ -19,9 +19,9 @@ diff -Naur dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/CMakeLists.tx
  
  	set(src_sys_core
  		sys/glimp.cpp
-diff -Naur dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/renderer/draw_common.cpp dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e/neo/renderer/draw_common.cpp
---- dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/renderer/draw_common.cpp	2017-05-04 20:41:37.456056625 +0200
-+++ dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e/neo/renderer/draw_common.cpp	2017-05-04 20:47:44.462375827 +0200
+diff -Naur dhewm3-1.5.0.old/neo/renderer/draw_common.cpp dhewm3-1.5.0/neo/renderer/draw_common.cpp
+--- dhewm3-1.5.0.old/neo/renderer/draw_common.cpp	2019-01-06 16:58:20.324095608 +0100
++++ dhewm3-1.5.0/neo/renderer/draw_common.cpp	2019-01-06 17:02:03.726252033 +0100
 @@ -1140,6 +1140,7 @@
  		return;
  	}

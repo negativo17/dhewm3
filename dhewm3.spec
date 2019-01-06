@@ -1,21 +1,14 @@
-%global commit0 cd8c3662e2f010398097ee654e739ec29550a30e
-%global date 20170422
-%global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
-
 Name:           dhewm3
-Version:        1.4.2
-Release:        2%{?shortcommit0:.%{date}git%{shortcommit0}}%{?dist}
+Version:        1.5.0
+Release:        1%{?dist}
 Summary:        Dhewm's Doom 3 engine
 License:        GPLv3+ with exceptions
 URL:            https://github.com/dhewm/%{name}
 
-Source0:        https://github.com/dhewm/%{name}/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
+Source0:        https://github.com/dhewm/%{name}/releases/download/%{version}/%{name}-%{version}-src.tar.xz
 Source1:        %{name}-README.txt
-# Compatibility with stock Doom 3 has been removed long ago and we don't ship
-# Doom 3 / Doom 3 Resurrection of Evil content.
 Patch0:         %{name}-no-cdkey.patch
-Patch1:         %{name}-def-fixedtic.patch
-Patch2:         %{name}-carmack.patch
+Patch1:         %{name}-carmack.patch
 
 ExcludeArch:    ppc64le
 
@@ -25,6 +18,7 @@ Provides:       doom3-engine = 1.3.1.1304
 Provides:       bundled(minizip-idsoftware) = 1.2.7
 
 BuildRequires:  cmake
+BuildRequires:  gcc-c++
 BuildRequires:  libcurl-devel
 BuildRequires:  libjpeg-turbo-devel
 BuildRequires:  libogg-devel
@@ -41,10 +35,7 @@ original DOOM 3 will be fixed (when identified) without altering the original
 game-play.
 
 %prep
-%setup -qn %{name}-%{commit0}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 cp %{SOURCE1} ./README.txt
 iconv -f iso8859-1 -t utf-8 COPYING.txt > COPYING.txt.conv && mv -f COPYING.txt.conv COPYING.txt
 
@@ -77,6 +68,9 @@ fi
 %{_libdir}/%{name}
 
 %changelog
+* Sun Jan 06 2019 Simone Caronni <negativo17@gmail.com> - 1.5.0-1
+- Update to 1.5.0.
+
 * Thu May 04 2017 Simone Caronni <negativo17@gmail.com> - 1.4.2-2.20170422gitcd8c366
 - Update to latest snapshot.
 

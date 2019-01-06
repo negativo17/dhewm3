@@ -1,6 +1,6 @@
-diff -Naur dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/async/AsyncClient.cpp dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e/neo/framework/async/AsyncClient.cpp
---- dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/async/AsyncClient.cpp	2017-05-04 20:41:37.438056315 +0200
-+++ dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e/neo/framework/async/AsyncClient.cpp	2017-05-04 20:41:55.439366288 +0200
+diff -Naur dhewm3-1.5.0.old/neo/framework/async/AsyncClient.cpp dhewm3-1.5.0/neo/framework/async/AsyncClient.cpp
+--- dhewm3-1.5.0.old/neo/framework/async/AsyncClient.cpp	2019-01-06 16:58:20.380096648 +0100
++++ dhewm3-1.5.0/neo/framework/async/AsyncClient.cpp	2019-01-06 16:58:38.595434937 +0100
 @@ -1262,93 +1262,6 @@
  
  /*
@@ -151,9 +151,9 @@ diff -Naur dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/asy
  ===============
  idAsyncClient::CheckTimeout
  ===============
-diff -Naur dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/async/AsyncClient.h dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e/neo/framework/async/AsyncClient.h
---- dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/async/AsyncClient.h	2017-05-04 20:41:37.438056315 +0200
-+++ dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e/neo/framework/async/AsyncClient.h	2017-05-04 20:41:55.440366305 +0200
+diff -Naur dhewm3-1.5.0.old/neo/framework/async/AsyncClient.h dhewm3-1.5.0/neo/framework/async/AsyncClient.h
+--- dhewm3-1.5.0.old/neo/framework/async/AsyncClient.h	2019-01-06 16:58:20.379096629 +0100
++++ dhewm3-1.5.0/neo/framework/async/AsyncClient.h	2019-01-06 16:58:38.596434956 +0100
 @@ -114,9 +114,6 @@
  	void				SendReliableGameMessage( const idBitMsg &msg );
  
@@ -172,9 +172,9 @@ diff -Naur dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/asy
  	void				ProcessVersionMessage( const netadr_t from, const idBitMsg &msg );
  	void				ConnectionlessMessage( const netadr_t from, const idBitMsg &msg );
  	void				ProcessMessage( const netadr_t from, idBitMsg &msg );
-diff -Naur dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/BuildDefines.h dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e/neo/framework/BuildDefines.h
---- dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/BuildDefines.h	2017-05-04 20:41:37.434056246 +0200
-+++ dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e/neo/framework/BuildDefines.h	2017-05-04 20:41:55.440366305 +0200
+diff -Naur dhewm3-1.5.0.old/neo/framework/BuildDefines.h dhewm3-1.5.0/neo/framework/BuildDefines.h
+--- dhewm3-1.5.0.old/neo/framework/BuildDefines.h	2019-01-06 16:58:20.378096611 +0100
++++ dhewm3-1.5.0/neo/framework/BuildDefines.h	2019-01-06 16:58:38.597434974 +0100
 @@ -75,24 +75,6 @@
  	#define	ID_ALLOW_TOOLS
  #endif
@@ -200,10 +200,10 @@ diff -Naur dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/Bui
  // async network
  
  /*
-diff -Naur dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/Common.cpp dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e/neo/framework/Common.cpp
---- dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/Common.cpp	2017-05-04 20:41:37.434056246 +0200
-+++ dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e/neo/framework/Common.cpp	2017-05-04 20:41:55.441366322 +0200
-@@ -1049,7 +1049,6 @@
+diff -Naur dhewm3-1.5.0.old/neo/framework/Common.cpp dhewm3-1.5.0/neo/framework/Common.cpp
+--- dhewm3-1.5.0.old/neo/framework/Common.cpp	2019-01-06 16:58:20.378096611 +0100
++++ dhewm3-1.5.0/neo/framework/Common.cpp	2019-01-06 16:58:38.598434993 +0100
+@@ -1068,7 +1068,6 @@
  	com_developer.SetBool( false );
  
  	WriteConfigToFile( CONFIG_FILE );
@@ -211,7 +211,7 @@ diff -Naur dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/Com
  
  	// restore the developer cvar
  	com_developer.SetBool( developer );
-@@ -2832,11 +2831,7 @@
+@@ -2939,11 +2938,7 @@
  		InitGame();
  
  		// don't add startup commands if no CD key is present
@@ -223,9 +223,9 @@ diff -Naur dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/Com
  			// if the user didn't give any commands, run default action
  			session->StartMenu( true );
  		}
-diff -Naur dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/FileSystem.cpp dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e/neo/framework/FileSystem.cpp
---- dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/FileSystem.cpp	2017-05-04 20:41:37.437056298 +0200
-+++ dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e/neo/framework/FileSystem.cpp	2017-05-04 20:41:55.441366322 +0200
+diff -Naur dhewm3-1.5.0.old/neo/framework/FileSystem.cpp dhewm3-1.5.0/neo/framework/FileSystem.cpp
+--- dhewm3-1.5.0.old/neo/framework/FileSystem.cpp	2019-01-06 16:58:20.380096648 +0100
++++ dhewm3-1.5.0/neo/framework/FileSystem.cpp	2019-01-06 16:58:38.600435030 +0100
 @@ -2969,12 +2969,6 @@
  		return NULL;
  	}
@@ -239,12 +239,12 @@ diff -Naur dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/Fil
  	//
  	// search through the path, one element at a time
  	//
-diff -Naur dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/Licensee.h dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e/neo/framework/Licensee.h
---- dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/Licensee.h	2017-05-04 20:41:37.438056315 +0200
-+++ dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e/neo/framework/Licensee.h	2017-05-04 20:41:55.441366322 +0200
-@@ -100,12 +100,4 @@
- // Linux info
+diff -Naur dhewm3-1.5.0.old/neo/framework/Licensee.h dhewm3-1.5.0/neo/framework/Licensee.h
+--- dhewm3-1.5.0.old/neo/framework/Licensee.h	2019-01-06 16:58:20.380096648 +0100
++++ dhewm3-1.5.0/neo/framework/Licensee.h	2019-01-06 16:58:38.600435030 +0100
+@@ -101,12 +101,4 @@
  #define LINUX_DEFAULT_PATH				"/usr/local/games/doom3"
+ #endif
  
 -// CD Key file info
 -// goes into BASE_GAMEDIR whatever the fs_game is set to
@@ -255,9 +255,9 @@ diff -Naur dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/Lic
 -										"// id Software or Zenimax will NEVER ask you to send this file to them.\n"
 -
  #define CONFIG_SPEC						"config.spec"
-diff -Naur dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/Session.cpp dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e/neo/framework/Session.cpp
---- dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/Session.cpp	2017-05-04 20:41:37.438056315 +0200
-+++ dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e/neo/framework/Session.cpp	2017-05-04 20:45:01.640572572 +0200
+diff -Naur dhewm3-1.5.0.old/neo/framework/Session.cpp dhewm3-1.5.0/neo/framework/Session.cpp
+--- dhewm3-1.5.0.old/neo/framework/Session.cpp	2019-01-06 16:58:20.377096593 +0100
++++ dhewm3-1.5.0/neo/framework/Session.cpp	2019-01-06 16:58:38.601435048 +0100
 @@ -218,86 +218,6 @@
  }
  
@@ -740,9 +740,9 @@ diff -Naur dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/Ses
  ===============
  idSessionLocal::GetCurrentMapName
  ===============
-diff -Naur dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/Session.h dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e/neo/framework/Session.h
---- dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/Session.h	2017-05-04 20:41:37.438056315 +0200
-+++ dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e/neo/framework/Session.h	2017-05-04 20:41:55.442366339 +0200
+diff -Naur dhewm3-1.5.0.old/neo/framework/Session.h dhewm3-1.5.0/neo/framework/Session.h
+--- dhewm3-1.5.0.old/neo/framework/Session.h	2019-01-06 16:58:20.378096611 +0100
++++ dhewm3-1.5.0/neo/framework/Session.h	2019-01-06 16:58:38.601435048 +0100
 @@ -60,7 +60,6 @@
  	MSG_OKCANCEL,
  	MSG_YESNO,
@@ -792,9 +792,9 @@ diff -Naur dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/Ses
  	virtual const char *GetCurrentMapName( void ) = 0;
  
  	virtual int		GetSaveGameVersion( void ) = 0;
-diff -Naur dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/Session_local.h dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e/neo/framework/Session_local.h
---- dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/Session_local.h	2017-05-04 20:41:37.438056315 +0200
-+++ dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e/neo/framework/Session_local.h	2017-05-04 20:41:55.442366339 +0200
+diff -Naur dhewm3-1.5.0.old/neo/framework/Session_local.h dhewm3-1.5.0/neo/framework/Session_local.h
+--- dhewm3-1.5.0.old/neo/framework/Session_local.h	2019-01-06 16:58:20.379096629 +0100
++++ dhewm3-1.5.0/neo/framework/Session_local.h	2019-01-06 16:58:38.601435048 +0100
 @@ -124,16 +124,6 @@
  
  	virtual void		TimeHitch( int msec );
@@ -844,9 +844,9 @@ diff -Naur dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/Ses
  	int					authEmitTimeout;
  	bool				authWaitBox;
  
-diff -Naur dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/Session_menu.cpp dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e/neo/framework/Session_menu.cpp
---- dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e.old/neo/framework/Session_menu.cpp	2017-05-04 20:41:37.438056315 +0200
-+++ dhewm3-cd8c3662e2f010398097ee654e739ec29550a30e/neo/framework/Session_menu.cpp	2017-05-04 20:41:55.442366339 +0200
+diff -Naur dhewm3-1.5.0.old/neo/framework/Session_menu.cpp dhewm3-1.5.0/neo/framework/Session_menu.cpp
+--- dhewm3-1.5.0.old/neo/framework/Session_menu.cpp	2019-01-06 16:58:20.380096648 +0100
++++ dhewm3-1.5.0/neo/framework/Session_menu.cpp	2019-01-06 16:58:38.601435048 +0100
 @@ -313,7 +313,6 @@
  		guiMainMenu->SetStateString( "inGame", "0" );
  	}
