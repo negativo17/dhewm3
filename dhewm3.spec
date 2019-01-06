@@ -47,7 +47,7 @@ iconv -f iso8859-1 -t utf-8 COPYING.txt > COPYING.txt.conv && mv -f COPYING.txt.
     -DDEDICATED=ON \
     -DZFAIL=1 \
     neo
-make %{?_smp_mflags}
+%make_build
 
 %post
 /usr/sbin/alternatives --install %{_bindir}/doom3-engine doom3-engine %{_bindir}/%{name} 10
