@@ -1,14 +1,23 @@
+%global commit0 f24f18a61e7c05e1d8e2bf1da962e2587b1ef97a
+%global date 20191103
+%global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
+#global tag %{version}
+
 Name:           dhewm3
-Version:        1.5.0
-Release:        1%{?dist}
+Version:        1.5.1
+Release:        2%{!?tag:.%{date}git%{shortcommit0}}%{?dist}
 Summary:        Dhewm's Doom 3 engine
 License:        GPLv3+ with exceptions
 URL:            https://dhewm3.org/
 
-Source0:        https://github.com/dhewm/%{name}/releases/download/%{version}/%{name}-%{version}-src.tar.xz
+%if 0%{?tag:1}
+Source0:        https://github.com/dhewm/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+%else
+Source0:        https://github.com/dhewm/%{name}/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
+%endif
+
 Source1:        %{name}-README.txt
 Patch0:         %{name}-no-cdkey.patch
-Patch1:         %{name}-carmack.patch
 
 ExcludeArch:    ppc64le
 
@@ -35,8 +44,8 @@ original DOOM 3 will be fixed (when identified) without altering the original
 game-play.
 
 %prep
-%autosetup -p1
-cp %{SOURCE1} ./README.txt
+%autosetup -p1 -n %{name}-%{commit0}
+cp %{SOURCE1} ./Fedora-README.txt
 iconv -f iso8859-1 -t utf-8 COPYING.txt > COPYING.txt.conv && mv -f COPYING.txt.conv COPYING.txt
 
 %build
@@ -44,8 +53,9 @@ iconv -f iso8859-1 -t utf-8 COPYING.txt > COPYING.txt.conv && mv -f COPYING.txt.
 # which has hard coded GCC optimizations.
 %cmake \
     -DCMAKE_BUILD_TYPE=Fedora \
+    -DCORE=ON -DBASE=ON -DD3XP=ON \
     -DDEDICATED=ON \
-    -DZFAIL=1 \
+    -DSDL2=ON \
     neo
 %make_build
 
@@ -62,12 +72,15 @@ fi
 
 %files
 %license COPYING.txt
-%doc README.md README.txt
+%doc README.md Fedora-README.txt
 %{_bindir}/%{name}
 %{_bindir}/%{name}ded
 %{_libdir}/%{name}
 
 %changelog
+* Sun Nov 03 2019 Simone Caronni <negativo17@gmail.com> - 1.5.1-2.20191103gitf24f18a
+- Update to snapshot post 1.5.1 Prerelease 1.
+
 * Sun Jan 06 2019 Simone Caronni <negativo17@gmail.com> - 1.5.0-1
 - Update to 1.5.0.
 
