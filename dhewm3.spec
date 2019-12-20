@@ -51,6 +51,7 @@ iconv -f iso8859-1 -t utf-8 COPYING.txt > COPYING.txt.conv && mv -f COPYING.txt.
 %build
 # Passing a fake build name avoids default CMAKE_BUILD_TYPE="RelWithDebInfo"
 # which has hard coded GCC optimizations.
+export CXXFLAGS="%{optflags} -std=c++0x"
 %cmake \
     -DCMAKE_BUILD_TYPE=Fedora \
     -DCORE=ON -DBASE=ON -DD3XP=ON \
