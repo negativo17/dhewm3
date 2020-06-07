@@ -1,11 +1,11 @@
-%global commit0 f24f18a61e7c05e1d8e2bf1da962e2587b1ef97a
-%global date 20191103
+%global commit0 5919717d0592e438510fcb1ba0d6b306ff49a0c5
+%global date 20200601
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 #global tag %{version}
 
 Name:           dhewm3
 Version:        1.5.1
-Release:        2%{!?tag:.%{date}git%{shortcommit0}}%{?dist}
+Release:        1%{!?tag:.%{date}git%{shortcommit0}}%{?dist}
 Summary:        Dhewm's Doom 3 engine
 License:        GPLv3+ with exceptions
 URL:            https://dhewm3.org/
@@ -26,15 +26,11 @@ Provides:       doom3-engine = 1.3.1.1304
 
 Provides:       bundled(minizip-idsoftware) = 1.2.7
 
-BuildRequires:  cmake
+BuildRequires:  cmake3
 BuildRequires:  gcc-c++
 BuildRequires:  libcurl-devel
-BuildRequires:  libjpeg-turbo-devel
-BuildRequires:  libogg-devel
-BuildRequires:  libvorbis-devel
 BuildRequires:  openal-soft-devel
 BuildRequires:  SDL2-devel
-BuildRequires:  speex-devel
 BuildRequires:  zlib-devel
 
 %description
@@ -44,21 +40,26 @@ original DOOM 3 will be fixed (when identified) without altering the original
 game-play.
 
 %prep
+%if 0%{?tag:1}
+%autosetup -p1
+%else
 %autosetup -p1 -n %{name}-%{commit0}
+%endif
 cp %{SOURCE1} ./Fedora-README.txt
 iconv -f iso8859-1 -t utf-8 COPYING.txt > COPYING.txt.conv && mv -f COPYING.txt.conv COPYING.txt
 
 %build
+export CXXFLAGS="%{optflags} -std=c++0x"
+
 # Passing a fake build name avoids default CMAKE_BUILD_TYPE="RelWithDebInfo"
 # which has hard coded GCC optimizations.
-export CXXFLAGS="%{optflags} -std=c++0x"
-%cmake \
+%cmake3 \
     -DCMAKE_BUILD_TYPE=Fedora \
     -DCORE=ON -DBASE=ON -DD3XP=ON \
     -DDEDICATED=ON \
     -DSDL2=ON \
     neo
-%make_build
+%cmake3_build
 
 %post
 /usr/sbin/alternatives --install %{_bindir}/doom3-engine doom3-engine %{_bindir}/%{name} 10
@@ -69,7 +70,7 @@ if [ "$1" = 0 ]; then
 fi
 
 %install
-%make_install
+%cmake3_install
 
 %files
 %license COPYING.txt
@@ -79,6 +80,9 @@ fi
 %{_libdir}/%{name}
 
 %changelog
+* Thu Jun 29 2023 Simone Caronni <negativo17@gmail.com> - 1.5.1-3.20200601git5919717
+- Update to latest viable snapshot.
+
 * Sun Nov 03 2019 Simone Caronni <negativo17@gmail.com> - 1.5.1-2.20191103gitf24f18a
 - Update to snapshot post 1.5.1 Prerelease 1.
 
