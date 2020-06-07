@@ -1,11 +1,11 @@
-%global commit0 f24f18a61e7c05e1d8e2bf1da962e2587b1ef97a
-%global date 20191103
+%global commit0 e6f37131699b8906eee9fc47e572d1ba2132e2c1
+%global date 20200601
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 #global tag %{version}
 
 Name:           dhewm3
 Version:        1.5.1
-Release:        2%{!?tag:.%{date}git%{shortcommit0}}%{?dist}
+Release:        3%{!?tag:.%{date}git%{shortcommit0}}%{?dist}
 Summary:        Dhewm's Doom 3 engine
 License:        GPLv3+ with exceptions
 URL:            https://dhewm3.org/
@@ -79,6 +79,9 @@ fi
 %{_libdir}/%{name}
 
 %changelog
+* Sun Jun 07 2020 Simone Caronni <negativo17@gmail.com> - 1.5.1-3.20200601gite6f3713
+- Update to latest snapshot.
+
 * Sun Nov 03 2019 Simone Caronni <negativo17@gmail.com> - 1.5.1-2.20191103gitf24f18a
 - Update to snapshot post 1.5.1 Prerelease 1.
 
