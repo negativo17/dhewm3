@@ -1,11 +1,13 @@
-%global commit0 e6f37131699b8906eee9fc47e572d1ba2132e2c1
-%global date 20200601
+%global __cmake_in_source_build 1
+
+%global commit0 bbe30e300c1618207f447927b0accedd51ab8769
+%global date 20201102
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 #global tag %{version}
 
 Name:           dhewm3
 Version:        1.5.1
-Release:        3%{!?tag:.%{date}git%{shortcommit0}}%{?dist}
+Release:        4%{!?tag:.%{date}git%{shortcommit0}}%{?dist}
 Summary:        Dhewm's Doom 3 engine
 License:        GPLv3+ with exceptions
 URL:            https://dhewm3.org/
@@ -49,16 +51,17 @@ cp %{SOURCE1} ./Fedora-README.txt
 iconv -f iso8859-1 -t utf-8 COPYING.txt > COPYING.txt.conv && mv -f COPYING.txt.conv COPYING.txt
 
 %build
+export CXXFLAGS="%{optflags} -std=c++0x"
+
 # Passing a fake build name avoids default CMAKE_BUILD_TYPE="RelWithDebInfo"
 # which has hard coded GCC optimizations.
-export CXXFLAGS="%{optflags} -std=c++0x"
 %cmake \
     -DCMAKE_BUILD_TYPE=Fedora \
     -DCORE=ON -DBASE=ON -DD3XP=ON \
     -DDEDICATED=ON \
     -DSDL2=ON \
     neo
-%make_build
+%cmake_build
 
 %post
 /usr/sbin/alternatives --install %{_bindir}/doom3-engine doom3-engine %{_bindir}/%{name} 10
@@ -69,7 +72,7 @@ if [ "$1" = 0 ]; then
 fi
 
 %install
-%make_install
+%cmake_install
 
 %files
 %license COPYING.txt
@@ -79,6 +82,9 @@ fi
 %{_libdir}/%{name}
 
 %changelog
+* Fri Dec 04 2020 Simone Caronni <negativo17@gmail.com> - 1.5.1-4.20201102gitbbe30e3
+- Update to latest snapshot.
+
 * Sun Jun 07 2020 Simone Caronni <negativo17@gmail.com> - 1.5.1-3.20200601gite6f3713
 - Update to latest snapshot.
 
