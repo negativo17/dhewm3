@@ -3,11 +3,11 @@
 %global commit0 bbe30e300c1618207f447927b0accedd51ab8769
 %global date 20201102
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
-#global tag %{version}
+%global tag %{version}
 
 Name:           dhewm3
 Version:        1.5.1
-Release:        4%{!?tag:.%{date}git%{shortcommit0}}%{?dist}
+Release:        5%{!?tag:.%{date}git%{shortcommit0}}%{?dist}
 Summary:        Dhewm's Doom 3 engine
 License:        GPLv3+ with exceptions
 URL:            https://dhewm3.org/
@@ -46,7 +46,11 @@ original DOOM 3 will be fixed (when identified) without altering the original
 game-play.
 
 %prep
+%if 0%{?tag:1}
+%autosetup -p1
+%else
 %autosetup -p1 -n %{name}-%{commit0}
+%endif
 cp %{SOURCE1} ./Fedora-README.txt
 iconv -f iso8859-1 -t utf-8 COPYING.txt > COPYING.txt.conv && mv -f COPYING.txt.conv COPYING.txt
 
@@ -82,6 +86,9 @@ fi
 %{_libdir}/%{name}
 
 %changelog
+* Mon Mar 15 2021 Simone Caronni <negativo17@gmail.com> - 1.5.1-5
+- Update to final 1.5.1.
+
 * Fri Dec 04 2020 Simone Caronni <negativo17@gmail.com> - 1.5.1-4.20201102gitbbe30e3
 - Update to latest snapshot.
 
