@@ -1,13 +1,13 @@
 %global __cmake_in_source_build 1
 
-%global commit0 bbe30e300c1618207f447927b0accedd51ab8769
-%global date 20201102
+%global commit0 981863788f6d9cfb0ce4bb628c2df40306ba459a
+%global date 20210719
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
-%global tag %{version}
+#global tag %{version}
 
 Name:           dhewm3
-Version:        1.5.1
-Release:        5%{!?tag:.%{date}git%{shortcommit0}}%{?dist}
+Version:        1.5.2
+Release:        1%{!?tag:.%{date}git%{shortcommit0}}%{?dist}
 Summary:        Dhewm's Doom 3 engine
 License:        GPLv3+ with exceptions
 URL:            https://dhewm3.org/
@@ -31,12 +31,8 @@ Provides:       bundled(minizip-idsoftware) = 1.2.7
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libcurl-devel
-BuildRequires:  libjpeg-turbo-devel
-BuildRequires:  libogg-devel
-BuildRequires:  libvorbis-devel
 BuildRequires:  openal-soft-devel
 BuildRequires:  SDL2-devel
-BuildRequires:  speex-devel
 BuildRequires:  zlib-devel
 
 %description
@@ -86,6 +82,9 @@ fi
 %{_libdir}/%{name}
 
 %changelog
+* Mon Aug 02 2021 Simone Caronni <negativo17@gmail.com> - 1.5.2-1.20210719git9818637
+- Update to 1.5.2 snapshot.
+
 * Mon Mar 15 2021 Simone Caronni <negativo17@gmail.com> - 1.5.1-5
 - Update to final 1.5.1.
 
