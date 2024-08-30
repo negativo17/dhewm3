@@ -4,8 +4,8 @@
 %global tag %{version}
 
 Name:           dhewm3
-Version:        1.5.3
-Release:        2%{!?tag:.%{date}git%{shortcommit0}}%{?dist}
+Version:        1.5.4
+Release:        1%{?dist}
 Summary:        Dhewm's Doom 3 engine
 License:        GPLv3+ with exceptions
 URL:            https://dhewm3.org/
@@ -80,6 +80,9 @@ fi
 %{_libdir}/%{name}
 
 %changelog
+* Fri Aug 30 2024 Simone Caronni <negativo17@gmail.com> - 1.5.4-1
+- Update to 1.5.4.
+
 * Sat Apr 06 2024 Simone Caronni <negativo17@gmail.com> - 1.5.3-2
 - Update to final 1.5.3.
 
